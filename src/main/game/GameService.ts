@@ -47,7 +47,7 @@ export class GameService {
 
         try {
             await this.gameUpdater.validateClient(profile);
-            await this.gameStarter.start(profile);
+            await this.gameStarter.start(profile, server);
             await this.gameWatcher.watch();
         } catch (error) {
             this.gameWindow.sendToConsole(`${error}`);

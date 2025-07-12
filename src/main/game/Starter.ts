@@ -1,7 +1,7 @@
 import { spawn } from 'child_process';
 import { delimiter, join } from 'path';
 
-import { Profile, ZipHelper } from '@aurora-launcher/core';
+import { Profile, Server, ZipHelper } from '@aurora-launcher/core';
 import { LogHelper } from 'main/helpers/LogHelper';
 import { StorageHelper } from 'main/helpers/StorageHelper';
 import { coerce, gte, lte } from 'semver';
@@ -26,7 +26,9 @@ export class Starter {
         private authlibInjector: AuthlibInjector,
     ) {}
 
-    async start(clientArgs: Profile): Promise<void> {
+    async start(clientArgs: Profile,
+            server: Server,
+    ): Promise<void> {
         const clientDir = join(StorageHelper.clientsDir, clientArgs.clientDir);
 
         const clientVersion = coerce(clientArgs.version);
@@ -44,6 +46,8 @@ export class Starter {
         gameArgs.push('--version', clientArgs.version);
         gameArgs.push('--gameDir', clientDir);
         gameArgs.push('--assetsDir', StorageHelper.assetsDir);
+        gameArgs.push('--quickPlayMultiplayer', server.ip + ':' + server.port.toString());
+
 
         // TODO: add support legacy assets
 
