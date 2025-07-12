@@ -7,12 +7,12 @@ export const window = {
     resizable: false,
     maximizable: false,
     fullscreenable: false,
-    title: 'Aurora Launcher',
+    title: 'Chillout Launcher',
 };
 
 export const api = {
-    ws: 'ws://127.0.0.1:1370/ws',
-    web: 'http://127.0.0.1:1370',
+    ws: 'ws://0.0.0.0:1370/',
+    web: 'http://0.0.0.0:1370',
     // extraToken: token,
 };
 
