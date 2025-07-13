@@ -23,14 +23,19 @@ export default function SkinView() {
         control.enableZoom = false;
 
         // Поддержка загрузки и отображения скина
-        const { skinUrl, capeUrl, isAlex } = JSON.parse(
+        const { skinUrl, capeUrl, isAlex, userUUID } = JSON.parse(
             localStorage.getItem('userData') || '{}',
         );
+
+        const mySkinUrl = 'http://localhost/api/user/skin?uuid=' + userUUID;
+
+        console.log(mySkinUrl);
         if (skinUrl) {
             skinViewer.loadSkin(skinUrl);
         } else {
-            // Fuck skinview (race condition moment)
             skinViewer.loadSkin(defaultSkin);
+            skinViewer.loadSkin(mySkinUrl);
+            // Fuck skinview (race condition moment)
         }
         if (capeUrl) skinViewer.loadCape(capeUrl);
         if (isAlex) skinViewer.playerObject.skin.modelType = 'slim';
