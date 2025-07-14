@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ServerButton } from '../../components/ServerButton';
-import SkinView from '../../components/SkinView';
+import SkinView from '../../components/SkinView/SkinView';
 import classes from './index.module.sass';
 import { useTitlebar } from '../../components/TitleBar/hooks';
 

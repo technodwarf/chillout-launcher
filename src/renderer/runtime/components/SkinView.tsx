@@ -15,7 +15,7 @@ export default function SkinView() {
 
         skinViewer.camera.position.x = -20;
         skinViewer.camera.position.y = 20;
-        skinViewer.zoom = 0.8;
+        skinViewer.zoom = 0.6;
 
         skinViewer.controls.enableZoom = true;
         
@@ -31,12 +31,14 @@ export default function SkinView() {
         if (skinUrl) {
             skinViewer.loadSkin(skinUrl);
         } else {
-            skinViewer.loadSkin(defaultSkin);
+            // skinViewer.loadSkin(defaultSkin);
             skinViewer.loadSkin(mySkinUrl);
             // Fuck skinview (race condition moment)
         }
         if (capeUrl) skinViewer.loadCape(capeUrl);
         if (isAlex) skinViewer.playerObject.skin.modelType = 'slim';
+
+        skinViewer.animation = new IdleAnimation();
     }, []);
 
     return <canvas ref={skinCanvas} />;
