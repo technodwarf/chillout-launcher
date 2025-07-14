@@ -77,7 +77,7 @@
         "recoil": "^0.7.5",
         "reflect-metadata": "^0.1.13",
         "semver": "^7.3.5",
-        "skinview3d": "^2.2.1",
+        "skinview3d": "^3.4.1",
         "tar": "^6.2.0",
         "typedi": "^0.10.0"
     },

@@ -1,5 +1,5 @@
 import { MutableRefObject, useEffect, useRef } from 'react';
-import { IdleAnimation, SkinViewer, createOrbitControls } from 'skinview3d';
+import { IdleAnimation, SkinViewer } from 'skinview3d';
 
 import defaultSkin from '../assets/images/steve.png';
 
@@ -17,19 +17,17 @@ export default function SkinView() {
         skinViewer.camera.position.y = 20;
         skinViewer.zoom = 0.8;
 
-        skinViewer.animations.add(IdleAnimation);
-
-        const control = createOrbitControls(skinViewer);
-        control.enableZoom = false;
-
+        skinViewer.controls.enableZoom = true;
+        
         // Поддержка загрузки и отображения скина
-        const { skinUrl, capeUrl, isAlex, userUUID } = JSON.parse(
+        const { skinUrl, capeUrl, isAlex, userUUID, username } = JSON.parse(
             localStorage.getItem('userData') || '{}',
         );
 
+        skinViewer.nameTag = username;
+
         const mySkinUrl = 'http://localhost/api/user/skin?uuid=' + userUUID;
 
-        console.log(mySkinUrl);
         if (skinUrl) {
             skinViewer.loadSkin(skinUrl);
         } else {
